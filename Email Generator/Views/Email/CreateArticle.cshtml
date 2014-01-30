@@ -1,0 +1,43 @@
+﻿@model Email_Generator.Models.Article
+
+@{
+    ViewBag.Title = "Create Article";
+}
+
+<h2>Create Article</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Create Article</legend>
+        <div class="label">@Html.LabelFor(m => m.title)</div>
+        <div class="field">@Html.EditorFor(m => m.title) @Html.ValidationMessageFor(m => m.title)</div>
+
+        <div class="label">@Html.LabelFor(m => m.description)</div>
+        <div class="field">@Html.EditorFor(m => m.description) @Html.ValidationMessageFor(m => m.description)</div>
+
+        <div class="label">@Html.LabelFor(m => m.link)</div>
+        <div class="field">@Html.EditorFor(m => m.link) @Html.ValidationMessageFor(m => m.link)</div>
+
+        <div class="label">@Html.LabelFor(m => m.category)</div>
+        <div class="field">@Html.DropDownListFor(m => m.category, (SelectList)ViewBag.categories) @Html.ValidationMessageFor(m => m.category)</div>
+
+        <div class="labal hide">@Html.LabelFor(m => m.date)</div>
+        <div class="field hide date">@Html.EditorFor(m => m.date)</div>
+
+        <div class="labal hide">@Html.LabelFor(m => m.time)</div>
+        <div class="field hide">@Html.EditorFor(m => m.time)</div>
+
+        <div class="labal hide">@Html.LabelFor(m => m.location)</div>
+        <div class="field hide">@Html.EditorFor(m => m.location)</div>
+
+        <div>
+            <input type="submit" value="Create" /></div>
+    </fieldset>
+}
+<p>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Back to Issue", "Issue", new { id = Model.issue }) |
+    @Html.ActionLink("Delete", "DeleteArticle", new { id = Model.id })
+</p>

@@ -1,0 +1,27 @@
+﻿@model Email_Generator.Models.IndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+@section HeadArea
+{
+    <link rel="stylesheet" href="@Href("~/Styles/main.css")" />
+}
+
+<h2>Email Generator</h2>
+
+<p>
+    <a href="@Url.Action("CreateIssue", "Email")" class="button-link">Create Issue</a>
+</p>
+<table>
+    @foreach (var item in Model.Issues)
+    {
+        <tr>
+            <td>
+                @item.semester @item.year Volume @item.volume
+                @Html.ActionLink("Edit", "EditIssue", new { id = item.id }, new { @class = "button-link" }) |
+                @Html.ActionLink("Details", "Issue", new { id = item.id }, new { @class = "button-link" }) |
+                @Html.ActionLink("Delete", "DeleteIssue", new { id = item.id}, new { @class = "button-link" })
+            </td>
+        </tr>
+    }
+</table>

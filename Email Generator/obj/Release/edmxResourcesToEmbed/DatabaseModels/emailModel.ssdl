@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="devModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="devModelStoreContainer">
+    <EntitySet Name="Article" EntityType="devModel.Store.Article" store:Type="Tables" Schema="email" />
+    <EntitySet Name="Category" EntityType="devModel.Store.Category" store:Type="Tables" Schema="email" />
+    <EntitySet Name="Issue" EntityType="devModel.Store.Issue" store:Type="Tables" Schema="email" />
+    <AssociationSet Name="FK_Article_Category" Association="devModel.Store.FK_Article_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Article_Issue" Association="devModel.Store.FK_Article_Issue">
+      <End Role="Issue" EntitySet="Issue" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Link" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Position" Type="int" Nullable="false" />
+    <Property Name="Category" Type="int" Nullable="false" />
+    <Property Name="Issue" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Location" Type="nvarchar(max)" />
+    <Property Name="Time" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Position" Type="int" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Semester" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Volume" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Article_Category">
+    <End Role="Category" Type="devModel.Store.Category" Multiplicity="1" />
+    <End Role="Article" Type="devModel.Store.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Article_Issue">
+    <End Role="Issue" Type="devModel.Store.Issue" Multiplicity="1" />
+    <End Role="Article" Type="devModel.Store.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Issue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

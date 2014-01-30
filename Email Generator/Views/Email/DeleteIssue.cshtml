@@ -1,0 +1,26 @@
+﻿@model Email_Generator.Models.IssueViewModel
+@{
+    ViewBag.Title = "Delete Issue";
+}
+
+<h2>Delete Issue</h2>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Delete Issue</legend>
+
+        <div class="label">@Html.LabelFor(m => m.semester)</div>
+        <div class="field">@Html.DisplayFor(m => m.semester)</div>
+
+        <div class="label">@Html.LabelFor(m => m.year)</div>
+        <div class="field">@Html.DisplayFor(m => m.year)</div>
+
+        <div class="label">@Html.LabelFor(m => m.volume)</div>
+        <div class="field">@Html.DisplayFor(m => m.volume)</div>
+
+        <div>
+            <input type="submit" value="Delete" /> |
+            @Html.ActionLink("Cancel", "Index") |
+            @Html.ActionLink("Edit", "EditIssue", new { id = Model.id })
+        </div>
+    </fieldset>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="devModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="devEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Articles" EntityType="devModel.Article" />
+    <EntitySet Name="Categories" EntityType="devModel.Category" />
+    <EntitySet Name="Issues" EntityType="devModel.Issue" />
+    <AssociationSet Name="FK_Article_Category" Association="devModel.FK_Article_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Article" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Article_Issue" Association="devModel.FK_Article_Issue">
+      <End Role="Issue" EntitySet="Issues" />
+      <End Role="Article" EntitySet="Articles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Link" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Position" Type="Int32" Nullable="false" />
+    <Property Name="Category" Type="Int32" Nullable="false" />
+    <Property Name="Issue" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Location" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Time" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Category1" Relationship="devModel.FK_Article_Category" FromRole="Article" ToRole="Category" />
+    <NavigationProperty Name="Issue1" Relationship="devModel.FK_Article_Issue" FromRole="Article" ToRole="Issue" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Position" Type="Int32" />
+    <NavigationProperty Name="Articles" Relationship="devModel.FK_Article_Category" FromRole="Category" ToRole="Article" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Semester" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Volume" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Articles" Relationship="devModel.FK_Article_Issue" FromRole="Issue" ToRole="Article" />
+  </EntityType>
+  <Association Name="FK_Article_Category">
+    <End Role="Category" Type="devModel.Category" Multiplicity="1" />
+    <End Role="Article" Type="devModel.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Article_Issue">
+    <End Role="Issue" Type="devModel.Issue" Multiplicity="1" />
+    <End Role="Article" Type="devModel.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Issue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

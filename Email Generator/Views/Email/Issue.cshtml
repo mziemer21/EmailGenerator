@@ -1,0 +1,103 @@
+﻿@model Email_Generator.Models.IssueViewModel
+@{
+    ViewBag.Title = "Issue";
+    
+    var Spotlight = Model.articleList.Where(category => category.category == 1).ToList();
+    Spotlight.Sort((a, b) => a.position.CompareTo(b.position));
+    
+    var UpcomingEvents = Model.articleList.Where(category => category.category == 2).ToList();
+    UpcomingEvents.Sort((a, b) => a.position.CompareTo(b.position));
+    
+    var SubSection1 = Model.articleList.Where(category => category.category == 3).ToList();
+    SubSection1.Sort((a, b) => a.position.CompareTo(b.position));
+    
+    var SubSection2 = Model.articleList.Where(category => category.category == 4).ToList();
+    SubSection2.Sort((a, b) => a.position.CompareTo(b.position));
+    
+    var SubSection3 = Model.articleList.Where(category => category.category == 5).ToList();
+    SubSection3.Sort((a, b) => a.position.CompareTo(b.position));  
+}
+
+<h2>Issue</h2>
+
+<div class="label">
+    @Html.DisplayFor(m => m.semester) @Html.DisplayFor(m => m.year) Volume @Html.DisplayFor(m => m.volume)
+</div>
+<div>
+    @Html.ActionLink("Edit", "EditIssue", new { id = Model.id }) |
+    @Html.ActionLink("Create Article", "CreateArticle", new { id = Model.id }) |
+    @Html.ActionLink("Generate Email Code", "GenerateCode", new { id = Model.id })
+</div>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Email @Model.semester @Model.year Volume @Model.volume</title>
+</head>
+
+<body>
+    @if (UpcomingEvents.Count != 0)
+    {
+        foreach (var i in UpcomingEvents)
+        {
+            var aName = "e" + i.id;
+            <a href="#@aName">@i.title</a><br />
+        }
+    }
+
+    @if (SubSection1.Count() != 0)
+    {
+        foreach (var i in SubSection1)
+        {
+            var aName = "e" + i.id;
+            <a href ="#@aName">@i.title</a>
+        }
+    }
+
+    @if (SubSection2.Count() != 0)
+    {
+        foreach (var i in SubSection1)
+        {
+            var aName = "e" + i.id;
+            <a href ="#@aName">@i.title</a>
+        }
+    }
+
+    @if (SubSection3.Count() != 0)
+    {
+        foreach (var i in SubSection1)
+        {
+            var aName = "e" + i.id;
+            <a href ="#@aName">@i.title</a>
+        }
+    }
+
+    @if (Spotlight.Count() != 0)
+    {
+        var description = Spotlight[0].description.Replace("<p>", "<p class='description'>");
+        <p>
+            <strong>@Spotlight[0].title</strong>
+            @Html.Raw(description)
+            @if (!string.IsNullOrWhiteSpace(Spotlight[0].link))
+            {
+                <a href="@Spotlight[0].link">Read More</a>
+            }
+        </p>
+        <p>
+            @Html.ActionLink("Edit", "EditArticle", new { id = Spotlight[0].id }) |
+            @Html.ActionLink("Delete", "DeleteArticle", new { Spotlight[0].id })
+        </p>
+    }
+
+    @if (UpcomingEvents.Count() != 0)
+    {
+        foreach (var i in UpcomingEvents)
+        {
+            var aName = "e" + i.id;
+            <a href=""
+        }
+    }
+
+</body>
+</html>
