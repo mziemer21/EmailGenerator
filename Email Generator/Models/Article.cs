@@ -34,15 +34,13 @@ namespace Email_Generator.Models
         public string location { get; set; }
         #endregion
 
-        //public Article()
-        //{
-        //}
+        public Article() {}
 
         public Article(int id)
         {
             DatabaseModels.Article article = new DatabaseModels.Article();
             article.Issue = id;
-            //article.Description = "";
+            article.Description = "";
         }
 
         //public void incrementPosition()

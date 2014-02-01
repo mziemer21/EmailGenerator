@@ -25,7 +25,7 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "EditIssue", new { id = Model.id }) |
-    @Html.ActionLink("Create Article", "CreateArticle", new { id = Model.id }) |
+    @Html.ActionLink("Create Article", "CreateArticle", new { issueId = Model.id }) |
     @Html.ActionLink("Generate Email Code", "GenerateCode", new { id = Model.id })
 </div>
 
@@ -95,7 +95,7 @@
         foreach (var i in UpcomingEvents)
         {
             var aName = "e" + i.id;
-            <a href=""
+            <a href="" />
         }
     }
 

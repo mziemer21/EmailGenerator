@@ -28,3 +28,33 @@ C:\Users\zieme_000\documents\visual studio 2012\Projects\Email Generator\Email G
 C:\Users\zieme_000\documents\visual studio 2012\Projects\Email Generator\Email Generator\obj\Release\Email Generator.csprojResolveAssemblyReference.cache
 C:\Users\zieme_000\documents\visual studio 2012\Projects\Email Generator\Email Generator\obj\Release\Email Generator.dll
 C:\Users\zieme_000\documents\visual studio 2012\Projects\Email Generator\Email Generator\obj\Release\Email Generator.pdb
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\Email Generator.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\Email Generator.pdb
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\Elmah.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\EntityFramework.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\Newtonsoft.Json.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Net.Http.Formatting.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Helpers.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Http.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Http.WebHost.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Mvc.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Razor.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.WebPages.Deployment.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.WebPages.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.WebPages.Razor.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\EntityFramework.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\Newtonsoft.Json.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Net.Http.Formatting.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Helpers.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Http.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Http.WebHost.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Mvc.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.Razor.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.WebPages.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.WebPages.Deployment.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\bin\System.Web.WebPages.Razor.xml
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\obj\Release\Email Generator.csprojResolveAssemblyReference.cache
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\obj\Release\Email Generator.dll
+C:\Users\mziemer\Desktop\GitHub\EmailGenerator\Email Generator\obj\Release\Email Generator.pdb

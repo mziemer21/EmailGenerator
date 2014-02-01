@@ -2,12 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title - Email Generator</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="~/Styles/main.css" />
         <script src="~/Scripts/email.js" type="text/javascript"></script>
         <script src="~/Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+        @RenderSection("HeadArea", required: false)
     </head>
     <body>
         <header>
@@ -18,7 +19,7 @@
                 <div class="float-right">
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Home", "Index")</li>
                         </ul>
                     </nav>
                 </div>

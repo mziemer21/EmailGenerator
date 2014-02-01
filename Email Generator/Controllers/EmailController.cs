@@ -51,7 +51,7 @@ namespace Email_Generator.Controllers
 
         public ActionResult EditIssue(int? id)
         {
-            var model = new Issue(id.Value);
+            var model = new IssueViewModel(id.Value);
             if (model.id != 0)
             {
                 return View(model);
@@ -71,7 +71,7 @@ namespace Email_Generator.Controllers
 
         public ActionResult DeleteIssue(int? id)
         {
-            var model = new Issue(id.Value);
+            var model = new IssueViewModel(id.Value);
             if (model.id != 0)
             {
                 return View(model);
