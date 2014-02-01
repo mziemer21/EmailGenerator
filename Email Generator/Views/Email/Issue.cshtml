@@ -1,6 +1,6 @@
 ﻿@model Email_Generator.Models.IssueViewModel
 @{
-    ViewBag.Title = "Issue";
+    ViewBag.Title = "Issuea";
     
     var Spotlight = Model.articleList.Where(category => category.category == 1).ToList();
     Spotlight.Sort((a, b) => a.position.CompareTo(b.position));
