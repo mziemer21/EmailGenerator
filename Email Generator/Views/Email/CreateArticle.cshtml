@@ -20,17 +20,23 @@
         <div class="label">@Html.LabelFor(m => m.link)</div>
         <div class="field">@Html.EditorFor(m => m.link) @Html.ValidationMessageFor(m => m.link)</div>
 
-        <div class="label">@Html.LabelFor(m => m.category)</div>
-        <div class="field">@Html.DropDownListFor(m => m.category, (SelectList)ViewBag.categories) @Html.ValidationMessageFor(m => m.category)</div>
+        <div class="label">@Html.LabelFor(model => model.category)</div>
+        <div class="field">@Html.DropDownListFor(model => model.category, (SelectList)ViewBag.categories) @Html.ValidationMessageFor(model => model.category)</div>
 
         <div class="labal hide">@Html.LabelFor(m => m.date)</div>
-        <div class="field hide date">@Html.EditorFor(m => m.date)</div>
+        <div class="field hide date">@Html.EditorFor(model => model.date, new { @class = "date" })</div>
 
         <div class="labal hide">@Html.LabelFor(m => m.time)</div>
         <div class="field hide">@Html.EditorFor(m => m.time)</div>
 
         <div class="labal hide">@Html.LabelFor(m => m.location)</div>
         <div class="field hide">@Html.EditorFor(m => m.location)</div>
+
+        <div class="field">
+            @Html.HiddenFor(m => m.issue)
+            @Html.HiddenFor(m => m.id)
+            @Html.HiddenFor(model => model.position)
+        </div>
 
         <div>
             <input type="submit" value="Create" /></div>

@@ -16,7 +16,7 @@ namespace Email_Generator.Models
         [Display(Name = "Description:"), Required(ErrorMessage = "Please fill in the description of the article"), DataType(DataType.MultilineText), MaxLength(8000), UIHint("tinymce_jquery_custom"), AllowHtml, MinLength(1)]
         public string description { get; set; }
         [Display(Name = "Read more link:"), StringLength(255)]
-        [RegularExpression(@"^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$", ErrorMessage = "URL format is wrong Ex. http://bus.wisc.edu")]
+        [RegularExpression(@"^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$", ErrorMessage = "URL format is wrong Ex. http://google.com")]
         public string link { get; set; }
         [Display(Name = "Category:"), Required(ErrorMessage = "Please choose a category for the article")]
         public int category { get; set; }
@@ -127,6 +127,7 @@ namespace Email_Generator.Models
                     article.Time = this.time;
                     article.Location = this.location;
                     article.Position = this.position;
+                    article.Date = this.date;
                     if (string.IsNullOrWhiteSpace(this.link))
                     {
                         article.Link = "";
@@ -135,6 +136,7 @@ namespace Email_Generator.Models
                     {
                         article.Link = this.link;
                     }
+                    issue.Articles.Add(article);
                     try
                     {
                         db.Articles.Add(article);
