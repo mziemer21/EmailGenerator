@@ -71,7 +71,7 @@ namespace Email_Generator.Controllers
 
         public ActionResult DeleteIssue(int? id)
         {
-            var model = new IssueViewModel(id.Value);
+            var model = new Issue(id.Value);
             if (model.id != 0)
             {
                 return View(model);
@@ -82,7 +82,7 @@ namespace Email_Generator.Controllers
         [HttpPost]
         public ActionResult DeleteIssue(Issue model)
         {
-            if ((ModelState.IsValid) && (model.saveChanges()))
+            if (model.deleteIssue())
             {
                 return RedirectToAction("Index");
             }
