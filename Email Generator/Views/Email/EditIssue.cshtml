@@ -18,10 +18,10 @@
         <div class="label">@Html.LabelFor(m => m.volume)</div>
         <div class="field">@Html.EditorFor(m => m.volume) @Html.ValidationMessageFor(m => m.volume)</div>
 
-        <div>
-            <input type="submit" value="Save" /> |
-            @Html.ActionLink("Delete", "DeleteIssue", new { id = Model.id }) |
-            @Html.ActionLink("Go to issue", "Issue", new { id = Model.id})
+        <div class="button-group">
+            <input type="submit" value="Save" class="button icon approve"/>
+            @Html.ActionLink("Delete", "DeleteIssue", new { id = Model.id }, new { @class = "button danger icon remove" })
+            @Html.ActionLink("Go to issue", "Issue", new { id = Model.id}, new { @class = "button icon log" })
         </div>
     </fieldset>
 }

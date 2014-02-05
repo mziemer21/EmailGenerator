@@ -23,10 +23,10 @@
 <div class="label">
     @Html.DisplayFor(m => m.semester) @Html.DisplayFor(m => m.year) Volume @Html.DisplayFor(m => m.volume)
 </div>
-<div>
-    @Html.ActionLink("Edit", "EditIssue", new { id = Model.id }) |
-    @Html.ActionLink("Create Article", "CreateArticle", new { issueId = Model.id }) |
-    @Html.ActionLink("Generate Email Code", "GenerateCode", new { id = Model.id })
+<div class="button-group">
+    @Html.ActionLink("Edit", "EditIssue", new { id = Model.id }, new { @class = "button icon edit" }) 
+    @Html.ActionLink("Create Article", "CreateArticle", new { issueId = Model.id }, new { @class = "button icon add" }) 
+    @Html.ActionLink("Generate Email Code", "GenerateIssueCode", new { id = Model.id }, new { @class = "button icon loop" })
 </div>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -88,18 +88,18 @@
                                                                     <blockquote>
                                                                         @foreach (var i in UpcomingEvents)
                                                                         {
-                                                                            var aName = "myBiz" + i.id;
+                                                                            var aName = "link" + i.id;
                                                                             <a href="#@aName" style="font-family: calibri; color: rgb(153, 153, 51); max-width: 250px">@i.title</a><br />
                                                                         }
                                                                     </blockquote>
                                                                 }
                                                                 @if (SubSection1.Count != 0)
                                                                 {
-                                                                    <p><a href="#bba" style="font-family: Calibri; color: rgb(153, 153, 51);">SUBSECTION 1</a></p>
+                                                                    <p><a href="#sub1" style="font-family: Calibri; color: rgb(153, 153, 51);">SUBSECTION 1</a></p>
                                                                     <blockquote>
                                                                         @foreach (var i in SubSection1)
                                                                         {
-                                                                            var aName = "myBiz" + i.id;
+                                                                            var aName = "link" + i.id;
                                                                             <a href="#@aName" style="font-family: calibri; color: rgb(153, 153, 51);  max-width: 250px">@i.title</a><br />
                                                                         }
                                                                     </blockquote>
@@ -110,18 +110,18 @@
                                                                     <blockquote>
                                                                         @foreach (var i in SubSection2)
                                                                         {
-                                                                            var aName = "myBiz" + i.id;
+                                                                            var aName = "link" + i.id;
                                                                             <a href="#@aName" style="font-family: Calibri; color: rgb(153, 153, 51); max-width: 250px">@i.title</a><br />
                                                                         }
                                                                     </blockquote>
                                                                 }
                                                                 @if (SubSection3.Count != 0)
                                                                 {
-                                                                    <p><a href="#bog" style="font-family: Calibri; color: rgb(153, 153, 51);">SUBSECTION 3</a></p>
+                                                                    <p><a href="#sub3" style="font-family: Calibri; color: rgb(153, 153, 51);">SUBSECTION 3</a></p>
                                                                     <blockquote>
                                                                         @foreach (var i in SubSection3)
                                                                         {
-                                                                            var aName = "myBiz" + i.id;
+                                                                            var aName = "link" + i.id;
                                                                             <a href="#@aName" style="font-family: Calibri; color: rgb(153, 153, 51); max-width: 250px">@i.title</a><br />
                                                                         }
                                                                     </blockquote>
@@ -151,9 +151,9 @@
                                                                             <a href="@Spotlight[0].link">Read more</a>
                                                                         }
                                                                     </p>
-                                                                    <p>
-                                                                        @Html.ActionLink("Edit", "EditArticle", new { id = Spotlight[0].id }) |
-                                                                        @Html.ActionLink("Delete", "DeleteArticle", new { id = Spotlight[0].id })
+                                                                    <p class="button-group">
+                                                                        @Html.ActionLink("Edit", "EditArticle", new { id = Spotlight[0].id }, new { @class = "button icon edit" }) 
+                                                                        @Html.ActionLink("Delete", "DeleteArticle", new { id = Spotlight[0].id }, new { @class = "button danger icon remove" })
                                                                     </p>
                                                                 }
                                                                 <p>
@@ -183,15 +183,14 @@
                                                     @foreach (var i in UpcomingEvents)
                                                     {
                                                         var descriptionFinal = i.description;
-                                                        var aId = "myBiz" + i.id;
+                                                        var aId = "link" + i.id;
                                                         <div class ="@i.title article" id="@aId">
                                                             <div class="position" style="display: inline">Position:</div>
                                                             <div style="display: inline; cursor: pointer" class="move-up">
-                                                                <img src="../../../Content/_images/plus.png" class="move-up" />
-                                                                &nbsp &nbsp
+                                                                <a class="button icon arrowup" href="#button">Move up</a>
                                                             </div>
                                                             <div style="display: inline; cursor: pointer" class="move-down">
-                                                                <img src="../../../Content/_images/minus.png" class="move-down" />
+                                                                <a class="button icon arrowdown" href="#button">Move down</a>
                                                             </div>
                                                             <!--buttons-->
                                                             <p>
@@ -214,17 +213,17 @@
                                                                     <a href="@i.link">Read more</a>
                                                                 }
                                                             </p>
-                                                            <p>
-                                                                @Html.ActionLink("Edit", "EditArticle", new { id = i.id }) |
-                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id })
+                                                            <p class="button-group">
+                                                                @Html.ActionLink("Edit", "EditArticle", new { id = i.id }, new { @class = "button icon edit" }) 
+                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id }, new { @class = "button danger icon remove" })
                                                             </p>
                                                         </div>
                                                     }
                                                     <p>
-                                                        Visit <a href="http://bus.wisc.edu/BBA/myBiz" style="font-family: Calibri; color: rgb(153, 153, 51);">myBiz</a> for complete details about each event.
+                                                        Visit <a href="http://google.com" style="font-family: Calibri; color: rgb(153, 153, 51);">google</a> for complete details about each event.
                                                     </p>
                                                     <p style="font-size: 12px;">
-                                                        Check <a href="http://bus.wisc.edu/knowledge-expertise/calendar-events/BBA-Events" style="font-family: Calibri; color: rgb(153, 153, 51);">the events calendar</a> to confirm room locations, dates, and times.
+                                                        Check <a href="http://google.com" style="font-family: Calibri; color: rgb(153, 153, 51);">the events calendar</a> to confirm room locations, dates, and times.
                                                     </p>
                                                 </div>
                                             </div>
@@ -239,23 +238,22 @@
                                                         <a class="top" href="#top" style="font-family: Calibri; color: rgb(153, 153, 51);">top</a>
                                                     </p>
                                                     <h2 style="font-size: 26px; font-weight: normal; font-family: Impact; color: rgb(211, 18, 69); margin: 0pt; padding: 0pt; border-bottom: 2px solid rgb(153, 153, 51);">
-                                                        <a name="bba"></a>WISCONSIN BBA</h2>
+                                                        <a name="sub1"></a>Subsection 1</h2>
                                                 </div>
                                                 <div class="divLeftSectionContent" style="">
 
                                                     @foreach (var i in SubSection1)
                                                     {
-                                                        var aName = "bba" + i.ToString();
+                                                        var aName = "sub1" + i.ToString();
                                                         var descriptionFinal = i.description;
-                                                        var aId = "myBiz" + i.id;
+                                                        var aId = "link" + i.id;
                                                         <div class ="@i.title article" id="@aId">
                                                             <div class="position" style="display: inline">Position:</div>
                                                             <div style="display: inline; cursor: pointer" class="move-up">
-                                                                <img src="../../../Content/_images/plus.png" class="move-up" />
-                                                                &nbsp &nbsp
+                                                                <a class="button icon arrowup" href="#button">Move up</a>
                                                             </div>
                                                             <div style="display: inline; cursor: pointer" class="move-down">
-                                                                <img src="../../../Content/_images/minus.png" class="move-down" />
+                                                                <a class="button icon arrowdown" href="#button">Move down</a>
                                                             </div>
                                                             <!--buttons-->
                                                             <p style="">
@@ -266,9 +264,9 @@
                                                                     <a href="@i.link">Read more</a>
                                                                 }
                                                             </p>
-                                                            <p>
-                                                                @Html.ActionLink("Edit", "EditArticle", new { id = i.id }) |
-                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id })
+                                                            <p class="button-group">
+                                                                @Html.ActionLink("Edit", "EditArticle", new { id = i.id }, new { @class = "button icon edit" }) 
+                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id }, new { @class = "button danger icon remove" })
                                                             </p>
                                                         </div>
                                                     }
@@ -285,7 +283,7 @@
                                                         <a class="top" href="#top" style="font-family: Calibri; color: rgb(153, 153, 51);">top</a>
                                                     </p>
                                                     <h2 style="font-size: 26px; font-weight: normal; font-family: Impact; color: rgb(211, 18, 69); margin: 0pt; padding: 0pt; border-bottom: 2px solid rgb(153, 153, 51);">
-                                                        <a name="so"></a>STUDENT ORGS AND STUDENT LIFE</h2>
+                                                        <a name="sub2"></a>Sub Section 2</h2>
                                                 </div>
                                                 <div class="divLeftSectionContent" style="">
 
@@ -293,15 +291,14 @@
                                                     {
                                                         var aName = "so" + i.ToString();
                                                         var descriptionFinal = i.description;
-                                                        var aId = "myBiz" + i.id;
+                                                        var aId = "link" + i.id;
                                                         <div class ="@i.title article" id="@aId">
                                                             <div class="position" style="display: inline">Position:</div>
                                                             <div style="display: inline; cursor: pointer" class="move-up">
-                                                                <img src="../../../Content/_images/plus.png" class="move-up" />
-                                                                &nbsp &nbsp
+                                                                <a class="button icon arrowup" href="#button">Move up</a>
                                                             </div>
                                                             <div style="display: inline; cursor: pointer" class="move-down">
-                                                                <img src="../../../Content/_images/minus.png" class="move-down" />
+                                                                <a class="button icon arrowdown" href="#button">Move down</a>
                                                             </div>
                                                             <!--buttons-->
                                                             <p style="">
@@ -312,9 +309,9 @@
                                                                     <a href="@i.link">Read more</a>
                                                                 }
                                                             </p>
-                                                            <p>
-                                                                 @Html.ActionLink("Edit", "EditArticle", new { id = i.id }) |
-                                                                 @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id })
+                                                            <p class="button-group">
+                                                                 @Html.ActionLink("Edit", "EditArticle", new { id = i.id }, new { @class = "button icon edit" }) 
+                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id }, new { @class = "button danger icon remove" })
                                                             </p>
                                                         </div>
                                                     }
@@ -328,23 +325,22 @@
                                             <div class="divLeftSectionWrapper" style="margin-top: 30px;">
                                                 <div class="divLeftSectionHeader" style="">
                                                     <h2 style="font-size: 26px; font-weight: normal; font-family: Impact; color: rgb(211, 18, 69); margin: 0pt; padding: 0pt; border-bottom: 2px solid rgb(153, 153, 51);">
-                                                        <a name="bog"></a>BEYOND GRAINGER</h2>
+                                                        <a name="sub3"></a>BEYOND GRAINGER</h2>
                                                 </div>
 
                                                 <div class="divLeftSectionContent" style="">
                                                     @foreach (var i in SubSection3)
                                                     {
-                                                        var aName = "bog" + i.ToString();
+                                                        var aName = "sub3" + i.ToString();
                                                         var descriptionFinal = i.description;
-                                                        var aId = "myBiz" + i.id;
+                                                        var aId = "link" + i.id;
                                                         <div class ="@i.title article" id="@aId">
                                                             <div class="position" style="display: inline">Position:</div>
                                                             <div style="display: inline; cursor: pointer" class="move-up">
-                                                                <img src="../../../Content/_images/plus.png" class="move-up" />
-                                                                &nbsp &nbsp
+                                                                <a class="button icon arrowup" href="#button">Move up</a>
                                                             </div>
                                                             <div style="display: inline; cursor: pointer" class="move-down">
-                                                                <img src="../../../Content/_images/minus.png" class="move-down" />
+                                                                <a class="button icon arrowdown" href="#button">Move down</a>
                                                             </div>
                                                             <!--buttons-->
                                                             <p style="">
@@ -355,9 +351,9 @@
                                                                     <a href="@i.link">Read more</a>
                                                                 }
                                                             </p>
-                                                            <p>
-                                                                @Html.ActionLink("Edit", "EditArticle", new { id = i.id }) |
-                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id })
+                                                            <p class="button-group">
+                                                                @Html.ActionLink("Edit", "EditArticle", new { id = i.id }, new { @class = "button icon edit" }) 
+                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id }, new { @class = "button danger icon remove" })
                                                             </p>
                                                         </div>
                                                     }
@@ -372,8 +368,8 @@
                                     <br />
                                     <font color="#D31245" face="Impact" size="3">For more news and information visit</font>
                                     <p align="right" style="padding-right: 75px; margin-top: -10px;">
-                                        <a name="0.1_graphic0A" style="font-family: Calibri; color: #993"></a><a href="http://bus.wisc.edu/BBA/myBiz" style="font-family: Calibri; color: rgb(153, 153, 51);" target="_blank"><font face="Arial" size="1">
-                                            <img alt="myBizs" border="0" src="http://ww.bus.wisc.edu/_email/campaigns/2010_10_fall/footer_biz.png" /></font></a>
+                                        <a name="0.1_graphic0A" style="font-family: Calibri; color: #993"></a><a href="http://bus.wisc.edu/BBA/d" style="font-family: Calibri; color: rgb(153, 153, 51);" target="_blank"><font face="Arial" size="1">
+                                            <img alt="imgs" border="0" src="http://ww.bus.wisc.edu/_email/campaigns/2010_10_fall/footer_biz.png" /></font></a>
                                     </p>
                                 </td>
                             </tr>

@@ -133,6 +133,7 @@ namespace Email_Generator.Controllers
             {
                 ViewBag.categories = new SelectList(db.Categories.OrderBy(i => i.Position).ToList(), "Id", "Name", model.category);
             }
+
             return View(model);
         }
 
@@ -161,7 +162,8 @@ namespace Email_Generator.Controllers
             {
                 ViewBag.categories = new SelectList(db.Categories.OrderBy(i => i.Position).ToList(), "Id", "Name", model.category);
             }
-            return View(model);
+            var modelNew = new ArticleViewModel(model.id);
+            return View(modelNew);
         }
 
         public ActionResult DeleteArticle(int? id)

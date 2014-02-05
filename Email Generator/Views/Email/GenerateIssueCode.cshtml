@@ -1,5 +1,375 @@
-﻿@{
+﻿@model Email_Generator.Models.IssueViewModel
+@{
+    ViewBag.Title = "Issue";
+
+    var Spotlight = Model.articleList.Where(category => category.category == 1).ToList();
+    Spotlight.Sort((a, b) => a.position.CompareTo(b.position));
+
+    var UpcomingEvents = Model.articleList.Where(category => category.category == 2).ToList();
+    UpcomingEvents.Sort((a, b) => a.position.CompareTo(b.position));
+
+    var SubSection1 = Model.articleList.Where(category => category.category == 3).ToList();
+    SubSection1.Sort((a, b) => a.position.CompareTo(b.position));
+
+    var SubSection2 = Model.articleList.Where(category => category.category == 4).ToList();
+    SubSection2.Sort((a, b) => a.position.CompareTo(b.position));
+
+    var SubSection3 = Model.articleList.Where(category => category.category == 5).ToList();
+    SubSection3.Sort((a, b) => a.position.CompareTo(b.position));  
+}
+
+@{
     ViewBag.Title = "GenerateIssueCode";
 }
 
 <h2>GenerateIssueCode</h2>
+<textarea id="textField" rows="10" cols="100" onclick="this.select();">
+ @section HeadArea {
+    <link rel="Stylesheet" href="@Href("~Styles/main.css")" />
+    <style type="text/css">
+        blockquote {
+            margin-left: 16px;
+        }
+
+        .description {
+            display: inline;
+        }
+
+        .position {
+            font-size: 14px;
+            color: #493F38;
+            font-weight: bold;
+        }
+    </style>
+}
+   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html style="" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <title> @Model.semester @Model.year, Volume @Model.volume</title>
+    </head>
+<body style="font-family: Calibri,Verdana,Arial,Helvetica,sans-serif;">
+    <p>
+        &nbsp;
+    </p>
+    <table cellpadding="0" cellspacing="0" class="tableStructure" width="100%">
+        <tbody>
+            <tr align="center">
+                <td>
+                    <table border="0" cellpadding="0" cellspacing="0" class="centeredTable" style="border: 1px solid black; text-align: left;" width="700">
+                        <tbody>
+                            <tr class="header" style="background-color: rgb(0, 0, 0);">
+                                <td bgcolor="#000000">
+                                    <a name="top"></a></td>
+                            </tr>
+                            <tr class="iconsHeader">
+                                <td>
+                                    <div class="divIconsHeader" style="margin: 0pt 15px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="82%">
+                                                        <h3 class="volumeTitle" style="font-size: 16px; font-weight: bold; font-family: Calibri; padding: 0pt;">
+                                                            @Model.semester @Model.year, Volume @Model.volume</h3>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="mainContentWrapper">
+                                <td>
+                                    <table>
+                                        <tbody>
+                                            <tr class="mainContent" valign="top">
+                                                <td class="leftColumn" style="width: 450px; max-width: 450px">
+                                                    <div class="divLeftColumnContentWrapper" style="margin: 15px 15px 0pt;">
+                                                        <div class="divLeftSectionWrapper" style="margin-top: 30px;">
+                                                            <div class="divLeftSectionHeader" style="">
+                                                                <h2 style="font-size: 26px; font-weight: normal; font-family: Impact; color: rgb(211, 18, 69); margin: 0pt; padding: 0pt; border-bottom: 2px solid rgb(153, 153, 51);">IN THIS ISSUE</h2>
+                                                            </div>
+
+                                                            <div class="divLeftSectionContent" style="">
+                                                                <div class="divLeftSectionContent" style="">
+                                                                @if (!(UpcomingEvents.Count == 0))
+                                                                {                                    
+                                                                    <p><a href="#upcomingevents" style="font-family: Calibri; color: rgb(153, 153, 51);">UPCOMING EVENTS</a></p>
+                                                                    <blockquote>
+                                                                        @foreach (var i in UpcomingEvents)
+                                                                        {
+                                                                            var aName = "link" + i.id;
+                                                                            <a href="#@aName" style="font-family: calibri; color: rgb(153, 153, 51); max-width: 250px">@i.title</a><br />
+                                                                        }
+                                                                    </blockquote>
+                                                                }
+                                                                @if (SubSection1.Count != 0)
+                                                                {
+                                                                    <p><a href="#sub1" style="font-family: Calibri; color: rgb(153, 153, 51);">SUBSECTION 1</a></p>
+                                                                    <blockquote>
+                                                                        @foreach (var i in SubSection1)
+                                                                        {
+                                                                            var aName = "link" + i.id;
+                                                                            <a href="#@aName" style="font-family: calibri; color: rgb(153, 153, 51);  max-width: 250px">@i.title</a><br />
+                                                                        }
+                                                                    </blockquote>
+                                                                }
+                                                                @if (SubSection2.Count != 0)
+                                                                {
+                                                                    <p><a href="#so" style="font-family: Calibri; color: rgb(153, 153, 51);">SUBSECTION 2</a></p>
+                                                                    <blockquote>
+                                                                        @foreach (var i in SubSection2)
+                                                                        {
+                                                                            var aName = "link" + i.id;
+                                                                            <a href="#@aName" style="font-family: Calibri; color: rgb(153, 153, 51); max-width: 250px">@i.title</a><br />
+                                                                        }
+                                                                    </blockquote>
+                                                                }
+                                                                @if (SubSection3.Count != 0)
+                                                                {
+                                                                    <p><a href="#sub3" style="font-family: Calibri; color: rgb(153, 153, 51);">SUBSECTION 3</a></p>
+                                                                    <blockquote>
+                                                                        @foreach (var i in SubSection3)
+                                                                        {
+                                                                            var aName = "link" + i.id;
+                                                                            <a href="#@aName" style="font-family: Calibri; color: rgb(153, 153, 51); max-width: 250px">@i.title</a><br />
+                                                                        }
+                                                                    </blockquote>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="rightColumn" style="width: 250px;">
+                                                    <div class="divRightColumnContentWrapper" style="margin: 15px 15px 0pt 0pt;">
+                                                        <div class="divRightSectionWrapper" style="margin-top: 30px;">
+                                                            <div class="divRightSectionHeader" style="">
+                                                                <h2 style="font-size: 26px; font-weight: normal; font-family: Impact; color: rgb(211, 18,  69); margin: 0pt; padding: 0pt; border-bottom: 2px solid rgb(153, 153,  51);">SPOTLIGHT</h2>
+                                                            </div>
+                                                            <div class="divRightSectionContent" style="">
+                                                                <p>
+                                                                    <img alt="Placeholder" src="http://placehold.it/225x140" />
+                                                                </p>
+                                                                @if (Spotlight.Count != 0)
+                                                                {
+                                                                    var descriptionFinal = Spotlight[0].description.Replace("<p>", "<p class='description'>");
+                                                                    <p style="max-width: 200px;">
+                                                                        <strong>@Spotlight[0].title</strong><br />
+                                                                        @Html.Raw(descriptionFinal)
+                                                                        @if (!string.IsNullOrWhiteSpace(Spotlight[0].link))
+                                                                        {
+                                                                            <a href="@Spotlight[0].link">Read more</a>
+                                                                        }
+                                                                    </p>
+                                                                    <p>
+                                                                        @Html.ActionLink("Edit", "EditArticle", new { id = Spotlight[0].id }) |
+                                                                        @Html.ActionLink("Delete", "DeleteArticle", new { id = Spotlight[0].id })
+                                                                    </p>
+                                                                }
+                                                                <p>
+                                                                    <a href="#top" style="font-family: Calibri; color: rgb(153, 153, 51);">top</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="mainContent" valign="top">
+                                <td class="leftColumn" style="width: 450px;">
+
+                                    <div class="divLeftColumnContentWrapper" style="margin: 15px 15px 0pt;">
+                                        @if (!(UpcomingEvents.Count == 0))
+                                        {
+                                            <div class="divLeftSectionWrapper" style="margin-top: 30px;">
+                                                <div class="divLeftSectionHeader" style="">
+                                                    <h2 style="font-size: 26px; font-weight: normal; font-family: Impact; color: rgb(211, 18, 69); margin: 0pt; padding: 0pt; border-bottom: 2px solid rgb(153, 153, 51);">
+                                                        <a name="upcomingevents"></a>UPCOMING EVENTS</h2>
+                                                </div>
+                                                <div class="divLeftSectionContent" style="">
+                                                    @foreach (var i in UpcomingEvents)
+                                                    {
+                                                        var descriptionFinal = i.description;
+                                                        var aId = "link" + i.id;
+                                                        <div class ="@i.title article" id="@aId">
+                                                            <p>
+                                                                <strong>@i.title</strong><br />
+                                                                @if (i.date != null)
+                                                                {
+                                                                    <span><strong>Date: </strong></span>@i.date.Value.ToShortDateString() <br />
+                                                                }
+                                                                @if (i.time != null)
+                                                                {
+                                                                    <span><strong>Time: </strong></span>@i.time <br />
+                                                                }
+                                                                @if (i.location != null)
+                                                                {
+                                                                    <span><strong>Location: </strong></span>@i.location
+                                                                    <br />
+                                                                }
+                                                                @if (i.link != "" && i.link != null)
+                                                                {
+                                                                    <a href="@i.link">Read more</a>
+                                                                }
+                                                            </p>
+                                                            <p>
+                                                                @Html.ActionLink("Edit", "EditArticle", new { id = i.id }) |
+                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id })
+                                                            </p>
+                                                        </div>
+                                                    }
+                                                    <p>
+                                                        Visit <a href="http://google.com" style="font-family: Calibri; color: rgb(153, 153, 51);">google</a> for complete details about each event.
+                                                    </p>
+                                                    <p style="font-size: 12px;">
+                                                        Check <a href="http://google.com" style="font-family: Calibri; color: rgb(153, 153, 51);">the events calendar</a> to confirm room locations, dates, and times.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                        @if (!(SubSection1.Count == 0))
+                                        {
+                                            <div class="divLeftSectionWrapper" style="margin-top: 30px;">
+                                                <div class="divLeftSectionHeader" style="">
+                                                    <p style="text-align: right; margin: 0pt;">
+                                                        <a class="top" href="#top" style="font-family: Calibri; color: rgb(153, 153, 51);">top</a>
+                                                    </p>
+                                                    <h2 style="font-size: 26px; font-weight: normal; font-family: Impact; color: rgb(211, 18, 69); margin: 0pt; padding: 0pt; border-bottom: 2px solid rgb(153, 153, 51);">
+                                                        <a name="sub1"></a>Subsection 1</h2>
+                                                </div>
+                                                <div class="divLeftSectionContent" style="">
+
+                                                    @foreach (var i in SubSection1)
+                                                    {
+                                                        var aName = "sub1" + i.ToString();
+                                                        var descriptionFinal = i.description;
+                                                        var aId = "link" + i.id;
+                                                        <div class ="@i.title article" id="@aId">
+                                                            <p style="">
+                                                                <a name="@aName" style="font-family: Calibri; color: #993"></a><strong>@i.title</strong><br />
+                                                                @Html.Raw(descriptionFinal)
+                                                                @if (i.link != "" && i.link != null)
+                                                                {
+                                                                    <a href="@i.link">Read more</a>
+                                                                }
+                                                            </p>
+                                                            <p>
+                                                                @Html.ActionLink("Edit", "EditArticle", new { id = i.id }) |
+                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id })
+                                                            </p>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                        @if (!(SubSection2.Count == 0))
+                                        {
+                                            <div class="divLeftSectionWrapper" style="margin-top: 30px;">
+                                                <div class="divLeftSectionHeader" style="">
+                                                    <p style="text-align: right; margin: 0pt;">
+                                                        <a class="top" href="#top" style="font-family: Calibri; color: rgb(153, 153, 51);">top</a>
+                                                    </p>
+                                                    <h2 style="font-size: 26px; font-weight: normal; font-family: Impact; color: rgb(211, 18, 69); margin: 0pt; padding: 0pt; border-bottom: 2px solid rgb(153, 153, 51);">
+                                                        <a name="sub2"></a>Sub Section 2</h2>
+                                                </div>
+                                                <div class="divLeftSectionContent" style="">
+
+                                                    @foreach (var i in SubSection2)
+                                                    {
+                                                        var aName = "so" + i.ToString();
+                                                        var descriptionFinal = i.description;
+                                                        var aId = "link" + i.id;
+                                                        <div class ="@i.title article" id="@aId">
+                                                            <p style="">
+                                                                <a name="@aName" style="font-family: Calibri; color: #993"></a><strong>@i.title</strong><br />
+                                                                @Html.Raw(descriptionFinal)
+                                                                @if (i.link != "" && i.link != null)
+                                                                {
+                                                                    <a href="@i.link">Read more</a>
+                                                                }
+                                                            </p>
+                                                            <p>
+                                                                 @Html.ActionLink("Edit", "EditArticle", new { id = i.id }) |
+                                                                 @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id })
+                                                            </p>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                        @if (!(SubSection3.Count == 0))
+                                        {
+                                            <div class="divLeftSectionWrapper" style="margin-top: 30px;">
+                                                <div class="divLeftSectionHeader" style="">
+                                                    <h2 style="font-size: 26px; font-weight: normal; font-family: Impact; color: rgb(211, 18, 69); margin: 0pt; padding: 0pt; border-bottom: 2px solid rgb(153, 153, 51);">
+                                                        <a name="sub3"></a>BEYOND GRAINGER</h2>
+                                                </div>
+
+                                                <div class="divLeftSectionContent" style="">
+                                                    @foreach (var i in SubSection3)
+                                                    {
+                                                        var aName = "sub3" + i.ToString();
+                                                        var descriptionFinal = i.description;
+                                                        var aId = "link" + i.id;
+                                                        <div class ="@i.title article" id="@aId">
+                                                            <p style="">
+                                                                <a name="@aName" style="font-family: Calibri; color: #993"></a><strong>@i.title</strong><br />
+                                                                @Html.Raw(descriptionFinal)
+                                                                @if (i.link != "" && i.link != null)
+                                                                {
+                                                                    <a href="@i.link">Read more</a>
+                                                                }
+                                                            </p>
+                                                            <p>
+                                                                @Html.ActionLink("Edit", "EditArticle", new { id = i.id }) |
+                                                                @Html.ActionLink("Delete", "DeleteArticle", new { id = i.id })
+                                                            </p>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="footer">
+                                <td style="background-color: rgb(176, 162, 65); padding-left: 15px;">
+                                    <br />
+                                    <font color="#D31245" face="Impact" size="3">For more news and information visit</font>
+                                    <p align="right" style="padding-right: 75px; margin-top: -10px;">
+                                        <a name="0.1_graphic0A" style="font-family: Calibri; color: #993"></a><a href="http://bus.wisc.edu/BBA/d" style="font-family: Calibri; color: rgb(153, 153, 51);" target="_blank"><font face="Arial" size="1">
+                                            <img alt="imgs" border="0" src="http://ww.bus.wisc.edu/_email/campaigns/2010_10_fall/footer_biz.png" /></font></a>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        &nbsp;
+    </p>
+</body>
+</html>
+
+    </textarea>
+
+
+
+<div>
+    @Html.ActionLink("Back to Issue", "Issue", new { id = Model.id }) |
+</div>

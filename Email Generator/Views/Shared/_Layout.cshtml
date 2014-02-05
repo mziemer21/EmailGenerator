@@ -6,6 +6,7 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="~/Styles/main.css" />
+        <link rel="stylesheet" href="~/Styles/buttons.css" />
         <link rel="stylesheet" href="~/Styles/jquery.ui/jquery.ui.all.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -20,9 +21,8 @@
                 </div>
                 <div class="float-right">
                     <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index")</li>
-                        </ul>
+                            @Html.ActionLink("Home", "Index", new { @class = "button icon edit" })
+
                     </nav>
                 </div>
             </div>

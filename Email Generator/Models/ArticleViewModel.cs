@@ -28,7 +28,7 @@ namespace Email_Generator.Models
         public int id { get; set; }
         [Display(Name = "Time")]
         public string time { get; set; }
-        [Display(Name = "Date"), DataType(DataType.DateTime), DisplayFormat(DataFormatString = "[0:MM/dd/yyyy]", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date"), DataType(DataType.DateTime), DisplayFormat(ApplyFormatInEditMode = true)]
         public DateTime? date { get; set; }
         [Display(Name = "Location")]
         public string location { get; set; }

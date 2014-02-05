@@ -1,4 +1,6 @@
-﻿handelNewSection = function () {
+﻿handleNewSection = function () {
+
+    $(".hide").hide();
 
     switch ($(this).val()) {
         case '1':
@@ -20,8 +22,11 @@
 };
 
 $(document).ready(function () {
-    $("#date").datepicker();
-    $("#category").change(handelNewSection);
+    $("#date").datepicker({ dateFormat: 'mm/dd/yy' });
+    $("#category").change(handleNewSection);
+
+    // Run the event handler once now to ensure everything is as it should be
+    handleNewSection.apply($("#category"));
 
     $(".leftColumn").on("click", ".move-up", function () {
         var curArticle = $(this).clostst(".article");

@@ -32,6 +32,10 @@
         <div class="labal hide">@Html.LabelFor(m => m.location)</div>
         <div class="field hide">@Html.EditorFor(m => m.location)</div>
 
+        <div class="field">
+                @Html.HiddenFor(m => m.issue)
+        </div>
+
         <div>
             <input type="submit" value="Save" />
             @Html.ActionLink("Delete", "DeleteArticle", new { id = Model.id }) |
