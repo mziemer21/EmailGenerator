@@ -10,17 +10,19 @@
 <h2>Email Generator</h2>
 
 <p>
-    <a href="@Url.Action("CreateIssue", "Email")" class="button-link">Create Issue</a>
+    @Html.ActionLink("Create Issue", "CreateIssue", new { }, new { @class = "button icon approve" })
 </p>
 <table>
     @foreach (var item in Model.Issues)
     {
         <tr>
-            <td>
-                @item.semester @item.year Volume @item.volume
-                @Html.ActionLink("Edit", "EditIssue", new { id = item.id }, new { @class = "button-link" }) |
-                @Html.ActionLink("Details", "Issue", new { id = item.id }, new { @class = "button-link" }) |
-                @Html.ActionLink("Delete", "DeleteIssue", new { id = item.id}, new { @class = "button-link" })
+            <td class="actions button-container" style="padding:3px;">
+                <span class="primary">@item.semester @item.year Volume @item.volume</span>
+                <span class="button-group">
+                    @Html.ActionLink("Edit", "EditIssue", new { id = item.id }, new { @class = "button icon edit" })
+                    @Html.ActionLink("Details", "Issue", new { id = item.id }, new { @class = "button icon search" })
+                    @Html.ActionLink("Delete", "DeleteIssue", new { id = item.id }, new { @class = "button danger icon trash" })
+                </span>
             </td>
         </tr>
     }

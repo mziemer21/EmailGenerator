@@ -18,10 +18,10 @@
         <div class="label">@Html.LabelFor(m => m.volume)</div>
         <div class="field">@Html.DisplayFor(m => m.volume)</div>
 
-        <div>
-            <input type="submit" value="Delete" /> |
-            @Html.ActionLink("Cancel", "Index") |
-            @Html.ActionLink("Edit", "EditIssue", new { id = Model.id })
+        <div class="button-group">
+            <input type="submit" value="Delete" class="button danger icon trash"/> 
+            @Html.ActionLink("Edit", "EditIssue", new { id = Model.id }, new { @class = "button icon edit" })
+            @Html.ActionLink("Cancel", "Index", new {  }, new { @class = "button danger icon remove" }) 
         </div>
     </fieldset>
 }
