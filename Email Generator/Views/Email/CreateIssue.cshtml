@@ -11,13 +11,13 @@
         <filedset>
             <legend>Create Issue</legend>
 
-            <div class="label">@Html.LabelFor(m => m.semester)</div>
+            <div class="labelName">@Html.LabelFor(m => m.semester)</div>
             <div class="field">@Html.EditorFor(m => m.semester) @Html.ValidationMessageFor(m => m.semester)</div>
 
-            <div class="label">@Html.LabelFor(m => m.year)</div>
+            <div class="labelName">@Html.LabelFor(m => m.year)</div>
             <div class="field">@Html.EditorFor(m => m.year) @Html.ValidationMessageFor(m => m.year)</div>
 
-            <div class="label">@Html.LabelFor(m => m.volume)</div>
+            <div class="labelName">@Html.LabelFor(m => m.volume)</div>
             <div class="field">@Html.EditorFor(m => m.volume) @Html.ValidationMessageFor(m => m.volume)</div>
 
             <div><input type="submit" value="Create"</div>

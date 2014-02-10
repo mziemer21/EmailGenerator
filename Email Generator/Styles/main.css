@@ -7,4 +7,13 @@
 .jumbotron {
     background-color:gray;
 }
+label {
+    color:black;
+}
+.primary {
+    font-weight:bold;
+}
+.labelName{
+    color:black;
+}
 

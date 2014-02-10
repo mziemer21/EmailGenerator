@@ -180,6 +180,9 @@
       <LastGenOutput>emailModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Images\buttonIcons.png" />
+    <Content Include="Images\minus.png" />
+    <Content Include="Images\plus.png" />
     <Content Include="Scripts\email.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -765,6 +768,7 @@
     <Content Include="Scripts\tinymce_old\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce_old\tinymce.js" />
     <Content Include="Scripts\tinymce_old\tinymce.min.js" />
+    <Content Include="Styles\buttons.css" />
     <Content Include="Styles\jquery.ui\jquery-ui.css" />
     <Content Include="Styles\jquery.ui\jquery.ui.accordion.css" />
     <Content Include="Styles\jquery.ui\jquery.ui.all.css" />

@@ -1,22 +1,22 @@
 ﻿handleNewSection = function () {
 
-    $(".hide").hide();
+    $(".hiddenTemp").hide();
 
     switch ($(this).val()) {
         case '1':
-            $(".hide").hide();
+            $(".hiddenTemp").hide();
             break;
         case '2':
-            $(".hide").show();
+            $(".hiddenTemp").show();
             break;
         case '3':
-            $(".hide").hide();
+            $(".hiddenTemp").hide();
             break;
         case '4':
-            $(".hide").hide();
+            $(".hiddenTemp").hide();
             break;
         case '5':
-            $(".hide").hide();
+            $(".hiddenTemp").hide();
             break;
     }
 };
